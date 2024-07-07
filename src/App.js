@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useTelegram } from "./hooks/useTelegram";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Header from "./components/Header/Header";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Tasks from './pages/Tasks';
+import Friends from './pages/Friends';
 import './App.css';
 
 function Home() {
