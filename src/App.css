@@ -1,11 +1,25 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* App.css */
+
+.start-button {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
+.toggle-button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-body {
-  background: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color);
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
 }
