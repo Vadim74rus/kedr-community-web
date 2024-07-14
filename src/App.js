@@ -19,7 +19,7 @@ function App() {
       setTimeout(() => {
         clearInterval(intervalId);
         setIsCounting(false);
-      }, 10000);
+      }, 110000);
     }
   };
 
