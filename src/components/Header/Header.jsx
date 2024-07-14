@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <Button onClick={onClose}></Button>
+
       <span className="username">
         {user?.username}
       </span>
