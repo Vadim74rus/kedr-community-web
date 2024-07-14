@@ -7,42 +7,44 @@ function App() {
   const { onToggleButton, tg } = useTelegram();
   const [count, setCount] = useState(0);
   const [isCounting, setIsCounting] = useState(false);
-  const [claimButtonVisible, setClaimButtonVisible] = useState(false);
+  const [increment, setIncrement] = useState(0.0000001);
+  const [duration, setDuration] = useState(60000);
+  const [timer, setTimer] = useState(duration);
 
   const startCounting = () => {
     if (!isCounting) {
       setIsCounting(true);
-      let increment = 0.0000001; // Измените значение здесь для ручной настройки количества начисляемых монет
       const intervalId = setInterval(() => {
         setCount((prevCount) => prevCount + increment);
-      }, 60); // Измените значение здесь для ручной настройки скорости начисления монет
+        setTimer((prevTimer) => prevTimer - 1000);
+      }, 60);
 
       setTimeout(() => {
         clearInterval(intervalId);
         setIsCounting(false);
-        setClaimButtonVisible(true);
-      }, 60000); // Измените значение здесь для ручной настройки продолжительности начисления монет
+        setTimer(duration);
+      }, duration);
     }
   };
 
+  useEffect(() => {
+    tg.ready();
+  }, []);
 
   return (
     <div className="App">
       <Header />
-      <h1 className="count" style={{ marginTop: '150px' }}>
-        K: {count.toFixed(7)} {/* Измените значение здесь для ручной настройки точности отображения */}
-      </h1>
+      <div className="count-container">
+        <h1 className="count">
+          K: {count.toFixed(7)}
+        </h1>
+        {!isCounting && (
+          <button className="start-button" onClick={startCounting}>
+            {timer > 0 ? `Start (${timer / 1000}s)` : "Start"}
+          </button>
+        )}
+      </div>
       <div className="button-container">
-        {!claimButtonVisible && (
-          <button className="start-button" onClick={startCounting} disabled={isCounting}>
-            {isCounting ? "Counting..." : "Start"}
-          </button>
-        )}
-        {claimButtonVisible && (
-          <button className="claim-button">
-            Claim
-          </button>
-        )}
         <button className="toggle-button" onClick={onToggleButton}>
           Toggle
         </button>
