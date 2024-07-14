@@ -6,7 +6,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <span className="username">
+      <span className="receiver">
         {user?.receiver}
       </span>
     </div>
