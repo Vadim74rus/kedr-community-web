@@ -9,7 +9,6 @@ const Header = () => {
     <div className="header">
       <span className="username">
         {user?.username}
-          {receiver?.receiver}
       </span>
     </div>
   );
