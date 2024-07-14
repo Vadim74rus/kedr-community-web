@@ -2,12 +2,12 @@ import React from 'react';
 import { useTelegram } from "../../hooks/useTelegram";
 
 const Header = () => {
-  const {tg, user, username, onClose } = useTelegram();
+  const {user, onClose } = useTelegram();
 
   return (
     <div className="header">
       <span className="username">
-        {tg.initDataUnsafe?.user?.username}
+        {user?.username}
       </span>
     </div>
   );

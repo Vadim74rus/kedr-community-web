@@ -46,7 +46,7 @@ function App() {
           </button>
         )}
       </div>
-      <div className="button-container" style={{ display: 'flex', justifyContent: 'center' }}>
+      ///<div className="button-container" style={{ display: 'flex', justifyContent: 'center' }}>
         <button className="toggle-button" onClick={onToggleButton} style={{ fontSize: '18px' }}>
           Toggle
         </button>
