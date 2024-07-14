@@ -7,12 +7,11 @@ const Header = () => {
 
   return (
     <div className="header">
-        <span className="username">
-        {user?.name}
-            {user?.name}
+      <span className="username">
+        {user?.nickname}
       </span>
     </div>
   );
 };
 
-export default Header;
+export default Header;;
