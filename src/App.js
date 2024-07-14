@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <h1 className="count" style={{ marginTop: '150px' }}>
+      <h1 className="count" style={{ marginTop: '250px' }}>
         K: {count.toFixed(4)}
       </h1>
       <div className="button-container">
