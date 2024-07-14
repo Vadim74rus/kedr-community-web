@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTelegram } from "../../hooks/useTelegram";
-import {receiveMessageOnPort} from "node:worker_threads";
 
 const Header = () => {
   const { user, onClose } = useTelegram();
