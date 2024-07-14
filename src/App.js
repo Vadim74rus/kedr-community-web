@@ -35,17 +35,19 @@ function App() {
     <div className="App">
       <Header />
       <div className="count-container">
-        <h1 className="count" style={{ fontSize: '68px', textAlign: 'center' }}>
+        <h1 className="count" style={{ fontSize: '48px', textAlign: 'center' }}>
           K: {count.toFixed(7)}
         </h1>
+      </div>
+      <div className="button-container">
         {!isCounting && (
-          <button className="start-button" onClick={startCounting} style={{ fontSize: '28px' }}>
+          <button className="start-button full-width" onClick={startCounting} style={{ fontSize: '28px' }}>
             {timer > 0 ? `Start (${timer / 1000}s)` : "Start"}
           </button>
         )}
       </div>
       <div className="button-container" style={{ display: 'flex', justifyContent: 'center' }}>
-        <button className="toggle-button" onClick={onToggleButton} style={{ fontSize: '1px' }}>
+        <button className="toggle-button" onClick={onToggleButton} style={{ fontSize: '18px' }}>
           Toggle
         </button>
       </div>

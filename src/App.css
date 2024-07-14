@@ -1,5 +1,3 @@
-/* App.css */
-
 .start-button {
   background-color: purple;
   color: white;
@@ -7,6 +5,7 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 }
 
 .toggle-button {
@@ -20,6 +19,6 @@
 
 .button-container {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
+  justify-content: center;
+  margin-top: auto;
 }
