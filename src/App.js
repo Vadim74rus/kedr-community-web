@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useTelegram } from "./hooks/useTelegram";
-import { createTable, addUser, getUser } from "./database";
 import Header from "./components/Header/Header";
 import './App.css';
 
@@ -26,19 +25,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    tg.ready();
-
-    // Создание таблицы в базе данных при первом запуске
-    createTable();
-
-    // Получение данных пользователя из базы данных
-    const userId = 123; // Замените на фактический идентификатор пользователя
-    const user = getUser(userId);
-
-    // Использование данных пользователя
-    console.log(user);
-  }, []);
 
   return (
     <div className="App">
