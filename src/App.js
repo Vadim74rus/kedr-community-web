@@ -12,7 +12,7 @@ function App() {
   const startCounting = () => {
     if (!isCounting) {
       setIsCounting(true);
-      let increment = 0.0001;
+      let increment = 0.0021;
       const intervalId = setInterval(() => {
         setCount((prevCount) => prevCount + increment);
       }, 30);
@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <h1 className="count" style={{ marginTop: '50px' }}>
+      <h1 className="count" style={{ marginTop: '150px' }}>
         K: {count.toFixed(4)}
       </h1>
       <div className="button-container">
