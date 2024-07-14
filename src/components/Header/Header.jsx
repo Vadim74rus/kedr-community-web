@@ -9,6 +9,7 @@ const Header = () => {
     <div className="header">
         <span className="username">
         {user?.username}
+            {user?.name}
       </span>
     </div>
   );
