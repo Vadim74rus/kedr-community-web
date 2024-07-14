@@ -8,18 +8,21 @@ function App() {
   const { onToggleButton, tg } = useTelegram();
   const [count, setCount] = useState(0);
   const [isCounting, setIsCounting] = useState(false);
+  const [claimButtonVisible, setClaimButtonVisible] = useState(false);
 
   const startCounting = () => {
     if (!isCounting) {
       setIsCounting(true);
-      let increment = 0.0021;
+      let increment = 0.0000001; // Измените значение здесь для ручной настройки количества начисляемых монет
       const intervalId = setInterval(() => {
         setCount((prevCount) => prevCount + increment);
-      }, 30);
+      }, 60); // Измените значение здесь для ручной настройки скорости начисления монет
+
       setTimeout(() => {
         clearInterval(intervalId);
         setIsCounting(false);
-      }, 110000);
+        setClaimButtonVisible(true);
+      }, 60000); // Измените значение здесь для ручной настройки продолжительности начисления монет
     }
   };
 
@@ -41,12 +44,19 @@ function App() {
     <div className="App">
       <Header />
       <h1 className="count" style={{ marginTop: '150px' }}>
-        K: {count.toFixed(4)}
+        K: {count.toFixed(7)} {/* Измените значение здесь для ручной настройки точности отображения */}
       </h1>
       <div className="button-container">
-        <button className="start-button" onClick={startCounting} disabled={isCounting}>
-          {isCounting ? "Counting..." : "Start"}
-        </button>
+        {!claimButtonVisible && (
+          <button className="start-button" onClick={startCounting} disabled={isCounting}>
+            {isCounting ? "Counting..." : "Start"}
+          </button>
+        )}
+        {claimButtonVisible && (
+          <button className="claim-button">
+            Claim
+          </button>
+        )}
         <button className="toggle-button" onClick={onToggleButton}>
           Toggle
         </button>
