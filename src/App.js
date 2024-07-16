@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import sqlite3 from 'sqlite3';
 import { useTelegram } from "./hooks/useTelegram";
 import Header from "./components/Header/Header";
 import './App.css';
@@ -29,6 +30,35 @@ function App() {
 
   useEffect(() => {
     tg.ready();
+
+    // Создание соединения с базой данных
+    const db = new sqlite3.Database('./database.db');
+
+    // Создание таблицы, если она не существует
+    db.run(`
+      CREATE TABLE IF NOT EXISTS db (
+        username TEXT,
+        count REAL
+      )
+    `);
+
+    // Получение данных пользователя и счета из базы данных
+    db.get(`
+      SELECT username, count
+      FROM db
+    `, (err, row) => {
+      if (err) {
+        console.error(err);
+      } else {
+        if (row) {
+          // Установка данных пользователя и счета
+          setCount(row.count);
+        }
+      }
+    });
+
+    // Закрытие соединения с базой данных
+    db.close();
   }, []);
 
   return (
@@ -36,7 +66,7 @@ function App() {
       <Header />
       <div className="count-container">
         <h1 className="count" style={{ fontSize: '48px', textAlign: 'center' }}>
-          K: {count.toFixed(7)}
+          KEDR: {count.toFixed(7)}
         </h1>
       </div>
       <div className="button-container">
@@ -46,7 +76,7 @@ function App() {
           </button>
         )}
       </div>
-      ///<div className="button-container" style={{ display: 'flex', justifyContent: 'center' }}>
+      <div className="button-container" style={{ display: 'flex', justifyContent: 'center' }}>
         <button className="toggle-button" onClick={onToggleButton} style={{ fontSize: '18px' }}>
           Toggle
         </button>
