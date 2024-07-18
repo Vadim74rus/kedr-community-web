@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import sqlite3 from 'sqlite3';
 import { useTelegram } from "./hooks/useTelegram";
 import Header from "./components/Header/Header";
 import './App.css';
@@ -28,13 +27,16 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    tg.ready();
+  }, []);
 
   return (
     <div className="App">
       <Header />
       <div className="count-container">
         <h1 className="count" style={{ fontSize: '48px', textAlign: 'center' }}>
-          KEDR: {count.toFixed(7)}
+          K: {count.toFixed(7)}
         </h1>
       </div>
       <div className="button-container">
