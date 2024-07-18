@@ -28,38 +28,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    tg.ready();
-
-    // Создание соединения с базой данных
-    const db = new sqlite3.Database('./database.db');
-
-    // Создание таблицы, если она не существует
-    db.run(`
-      CREATE TABLE IF NOT EXISTS db (
-        username TEXT,
-        count REAL
-      )
-    `);
-
-    // Получение данных пользователя и счета из базы данных
-    db.get(`
-      SELECT username, count
-      FROM db
-    `, (err, row) => {
-      if (err) {
-        console.error(err);
-      } else {
-        if (row) {
-          // Установка данных пользователя и счета
-          setCount(row.count);
-        }
-      }
-    });
-
-    // Закрытие соединения с базой данных
-    db.close();
-  }, []);
 
   return (
     <div className="App">
